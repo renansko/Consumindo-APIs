@@ -3,5 +3,5 @@ defmodule RepositoriosGet do
   alias RepositoriosGet.Users.Create, as: CreateUser
 
   defdelegate get_user(name), to: GetUser, as: :get_repo_indo
-  defdelegate create_user(name), to: CreateUser, as: :call
+  defdelegate create_user(params), to: CreateUser, as: :call
 end

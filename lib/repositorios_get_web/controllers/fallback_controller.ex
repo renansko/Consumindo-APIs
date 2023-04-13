@@ -4,10 +4,10 @@ defmodule RepositoriosGetWeb.FallbackController do
   alias RepositoriosGet.Error
   alias RepositoriosGetWeb.ErrorView
 
-  def call(conn, {:error, %Error{status: status, result: result}}) do
+  def call(conn, {:error, %Error{status: status}}) do
     conn
     |> put_status(status)
     |> put_view(ErrorView)
-    |> render("error.json", result: result)
+    |> render("error.json")
   end
 end

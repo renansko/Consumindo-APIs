@@ -7,7 +7,7 @@ defmodule RepositoriosGet.MixProject do
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -58,7 +58,8 @@ defmodule RepositoriosGet.MixProject do
       {:pbkdf2_elixir, "~> 1.3"},
       {:guardian, "~> 2.0"},
       {:bypass, "~> 2.1", only: :test},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+      {:poison, "~> 4.0"}
     ]
   end
 

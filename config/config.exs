@@ -23,6 +23,14 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :repositorios_get, RepositoriosGetWeb.Auth.Guardian,
+  issuer: "repositorios_get",
+  secret_key: "mix guardian.gen.secret"
+
+config :repositorios_get, RepositoriosGetWeb.Auth.Pipeline,
+  module: RepositoriosGetWeb.Auth.Guardian,
+  error_handler: RepositoriosGetWeb.Auth.ErrorHandler
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 

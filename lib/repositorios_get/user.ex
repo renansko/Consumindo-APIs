@@ -8,16 +8,15 @@ defmodule RepositoriosGet.User do
 
   @derive Jason.Encoder
   @fields [:username, :email, :password]
+  def build(changeset), do: apply_action(changeset, :create)
 
   schema "users" do
-    field :username, :string
-    field :email, :string
-    field :password, :string, virtual: true
-    field :password_hash, :string
+    field(:username, :string)
+    field(:email, :string)
+    field(:password, :string, virtual: true)
+    field(:password_hash, :string)
     timestamps()
   end
-
-  def build(changeset), do: apply_action(changeset, :create)
 
   def changeset(struct \\ %__MODULE__{}, params) do
     struct

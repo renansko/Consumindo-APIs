@@ -3,7 +3,7 @@ defmodule RepositoriosGetWeb.UserView do
 
   alias RepositoriosGet.User
 
-  def render("create.json", %{user: user}) do
+  def render("create.json",token: token, %{user: user}) do
     user =
       Poison.decode!(user,
         as: %{
@@ -19,7 +19,8 @@ defmodule RepositoriosGetWeb.UserView do
 
     %{
       message: "User created!",
-      user: user
+      user: user,
+      token: token
     }
   end
 end

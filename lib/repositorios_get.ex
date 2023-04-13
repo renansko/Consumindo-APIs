@@ -1,9 +1,7 @@
 defmodule RepositoriosGet do
-  @moduledoc """
-  RepositoriosGet keeps the contexts that define your domain
-  and business logic.
+  alias RepositoriosGet.RepoGet.Client, as: GetUser
+  alias RepositoriosGet.Users.Create, as: CreateUser
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate get_user(name), to: GetUser, as: :get_repo_indo
+  defdelegate create_user(name), to: CreateUser, as: :call
 end

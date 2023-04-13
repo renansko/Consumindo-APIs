@@ -2,7 +2,7 @@ defmodule RepositoriosGet.RepoGet.Client do
   use Tesla
 
   alias Tesla.Env
-  alias Repositorios_get.Error
+  alias RepositoriosGet.Error
   alias RepositoriosGet.RepoGet.Rebuild
 
   alias Github.Behabiour
@@ -18,9 +18,7 @@ defmodule RepositoriosGet.RepoGet.Client do
   plug Tesla.Middleware.Headers, @request_headers
   plug Tesla.Middleware.JSON
 
-
   def get_repo_indo(url \\ @base_url, username) do
-
     "#{url}/users/#{username}/repos"
     |> get()
     |> handle_response()

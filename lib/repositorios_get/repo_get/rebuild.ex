@@ -6,6 +6,7 @@ defmodule RepositoriosGet.RepoGet.Rebuild do
   @derive {Jason.Encoder, only: @keys}
 
   defstruct @keys
+
   def build(raw_repo) do
     %__MODULE__{
       id: raw_repo["id"],

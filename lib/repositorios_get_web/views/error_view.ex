@@ -1,6 +1,7 @@
 defmodule RepositoriosGetWeb.ErrorView do
   use RepositoriosGetWeb, :view
 
+  alias Tesla.Env
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   # def render("500.html", _assigns) do
@@ -12,5 +13,9 @@ defmodule RepositoriosGetWeb.ErrorView do
   # "Not Found".
   def template_not_found(template, _assigns) do
     Phoenix.Controller.status_message_from_template(template)
+  end
+
+  def render("error.json", result) do
+    %{message: result}
   end
 end

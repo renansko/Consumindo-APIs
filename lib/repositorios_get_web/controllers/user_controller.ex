@@ -17,6 +17,15 @@ defmodule RepositoriosGetWeb.UserController do
     |> handle_response("create.json",token: token, :created, user)
   end
 
+  def sign_in(conn, params) do
+    with {:ok, token} <- Guardian.authenticate(params) do
+      conn
+      |> put_status(:ok)
+      |> render("sign_in.json", token: token)
+    end
+  end
+
+
   defp handle_response(%User{} = user, conn, view, status) do
     user_data = Map.delete(user, :__meta__)
     json_data = Poison.encode!(user_data)

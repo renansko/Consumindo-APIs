@@ -8,14 +8,24 @@ defmodule RepositoriosGetWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug RepositoriosGetWeb.Auth.Pipeline
+  end
+
   scope "/", RepositoriosGetWeb do
-    pipe_through :api
+    pipe_through(:api)
 
-    get "/", PageController, :index
+    get("/", PageController, :index)
 
-    get "/client/:id", ClientController, :show
+    post("/user", UserController, :create)
 
-    post "/user", UserController, :create
+    post("/user/sign", UserController, :sign_in)
+  end
+
+  scope "/", RepositoriosGetWeb do
+    pipe_through([:api, :auth])
+
+    get("/client/:id", ClientController, :show)
   end
 
   # Other scopes may use custom stacks.
@@ -34,8 +44,8 @@ defmodule RepositoriosGetWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: RepositoriosGetWeb.Telemetry
+      pipe_through(:browser)
+      live_dashboard("/dashboard", metrics: RepositoriosGetWeb.Telemetry)
     end
   end
 end

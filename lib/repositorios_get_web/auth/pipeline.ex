@@ -1,4 +1,4 @@
-defmodule RepositoriosGetWeb.Auth.Pipeline do
+defmodule RepositoriosGetWeb.Auth.PipelinRepositoriosGetWeb.Auth.Pipeline do
   use Guardian.Plug.Pipeline, otp_app: :repositorios_get
 
   plug Guardian.Plug.VerifyHeader
